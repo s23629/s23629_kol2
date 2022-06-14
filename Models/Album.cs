@@ -13,6 +13,6 @@ namespace s23629.Models
         public int IdMusicLabel { get; set; }
 
         public virtual MusicLabel MusicLabel { get; set; }
-        public virtual ICollection<Track> Tracks { get; set; }
+        public virtual ICollection<Track> Track { get; set; }
     }
 }

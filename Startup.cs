@@ -2,11 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using s23629.DataAccess;
+using s23629.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +31,9 @@ namespace s23629
         {
 
             services.AddControllers();
+            services.AddDbContext <MusicalContext> (opt =>
+            opt.UseSqlServer("Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True"));
+            services.AddScoped<IMusicService, MusicService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "s23629", Version = "v1" });

@@ -10,6 +10,6 @@ namespace s23629.Models
         public int IdMusicLabel { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Album> Albums { get; set; }
+        public virtual ICollection<Album> Album { get; set; }
     }
 }
